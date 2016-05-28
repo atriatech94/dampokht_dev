@@ -1,0 +1,116 @@
+<dir-tabbar></dir-tabbar>
+<!--- =================================================================================--->
+<home-dir>
+    <ons-toolbar>
+        <div class="ons-css navigation-bar">
+            <div class="navigation-bar navigation-bar--android">
+                <div ng-click="go('/buybasket')" class="navigation-bar__left navigation-bar--android__left">
+                    <span  class="toolbar-button navigation-bar__line-height basket_anim" >
+                        <i class="ion-ios-cart-outline rubberBand animated" ></i>
+                        <span class="back_txt rubberBand">{{ basket_size }}</span>                
+                    </span>
+                </div>
+                <div class="navigation-bar__center navigation-bar--android__center">
+                    <div class="logo_img"></div>
+                </div>
+                <div ng-click="go('/branch')" class="navigation-bar__right navigation-bar--android__right"   >
+                    <span class="toolbar-button--quiet toolbar-button--quiet2 navigation-bar__line-height"  >
+                        <i class="da-dish icon_list" style="font-size:26px;"></i>
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+    </ons-toolbar>
+    <!--- =================================================================================--->
+     <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div> 
+    <!--==================================================================================------>
+    <ons-page>
+        <!---=================================================================================--->
+        <div class="page__content ons-page-inner" style="directon:ltr">
+            <!--- ===========slider==========-->
+            <owl-slider>
+                <div class="owl-carousel_one">
+                    <div class="item"><div class="slider_item"><img ng-src="img/test/f1.jpg"><h3>دمپخت من</h3><p>بهترین های ما</p></div></div>
+                    <div class="item"><div class="slider_item"><img ng-src="img/test/f2.jpg"><h3>دمپخت من</h3><p>بهترین های ما</p></div></div>
+                    <div class="item"><div class="slider_item"><img ng-src="img/test/f3.jpg"><h3>دمپخت من</h3><p>بهترین های ما</p></div></div>
+                    <div class="item"><div class="slider_item"><img ng-src="img/test/f1.jpg"><h3>دمپخت من</h3><p>بهترین های ما</p></div></div>
+                </div>
+            </owl-slider>
+            <!---=========list============-->
+            <ons-list class="home_list ">
+                <ons-list-item modifier="chevron" class="list-item-container" ng-click="go('/branch')" >
+                    <div class="list-item-left">
+                        <i class="da-dish icon_list"></i>
+                    </div>
+                    <div class="list-item-right">
+                        <div class="list-item-content">
+                            <div class="name">سفارش غذا</div>
+                            <span class="desc">انتخاب شعبه و سفارش غذا</span>
+                        </div>
+                    </div>
+                </ons-list-item>
+                <ons-list-item modifier="chevron" class="list-item-container" ng-if="login" ng-click="go('/myprofile/')" >
+                    <div class="list-item-left">
+                       <i class="ion-person icon_list"></i>
+                    </div>
+                    <div class="list-item-right">
+                        <div class="list-item-content">
+                            <div class="name">پنل کاربری</div>
+                            <span class="desc"> نمایش سفارش ها ، ویرایش آدرس ها و ... </span>
+                        </div>
+                    </div>
+                </ons-list-item>
+                
+                  <ons-list-item modifier="chevron" ng-if="!login" class="list-item-container" ng-click="go('/login')" >
+                    <div class="list-item-left">
+                       <i class="ion-ios-undo icon_list"></i>
+                    </div>
+                    <div class="list-item-right">
+                        <div class="list-item-content">
+                            <div class="name">ورود </div>
+                            <span class="desc">ورود به حساب کاربری دمپخت </span>
+                        </div>
+                    </div>
+                </ons-list-item>
+                
+                  <ons-list-item modifier="chevron" ng-if="!login" class="list-item-container" ng-click="go('/register')" >
+                    <div class="list-item-left">
+                       <i class="ion-ios-personadd icon_list"></i>
+                    </div>
+                    <div class="list-item-right">
+                        <div class="list-item-content">
+                            <div class="name">عضویت</div>
+                            <span class="desc"> عضویت در دمپخت</span>
+                        </div>
+                    </div>
+                </ons-list-item>
+            </ons-list>
+            <!--- =========h3============-->
+            <h3 class="title-ios">بهترین های دمپخت </h3>
+            <div class="owl-carousel_two">
+                <div class="item" ng-repeat="special in specials">
+                    <div class="slider_item">
+                        <img ng-src="{{base_img + special.picname}}">
+                        <h3>{{special.name}}</h3>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </ons-page>
+</home-dir>
+<!--- =================================================================================--->
+<ons-template id="myPopover.html">
+    <ons-popover cancelable direction="down">
+        <div style="text-align: center;">
+             <ons-list>
+                    <pop-over>
+                    <ons-list-item ng-click="go('/login')" ng-if="login == 0" >ورود به حساب کاربری</ons-list-item>
+                    <ons-list-item ng-click="go('/register')" ng-if="login == 0" >عضویت در دمپخت</ons-list-item>
+                    <ons-list-item ng-if="login == 1" >{{ name }}</ons-list-item>
+                    <ons-list-item ng-if="login == 1" ng-click="logout()" >برون رفت</ons-list-item>
+                </pop-over>
+            </ons-list>
+        </div>
+    </ons-popover>
+</ons-template>

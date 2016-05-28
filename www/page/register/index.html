@@ -1,0 +1,33 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="pw">
+  <ons-toolbar>
+    <div ng-click="hback();" class="left"><ons-back-button></ons-back-button></div>
+    <div class="center">عضویت در دمپخت</div>
+  </ons-toolbar>
+  <form>
+    <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div>
+      <div class="form-row">
+        <input type="text" ng-model="Name" class="text-input--underbar width-half rtl" placeholder="نام شما" >
+      </div>
+
+        <div class="form-row">
+          <input type="email" ng-model="email" class="text-input--underbar width-full rtl" placeholder="پست الکترونیک شما">
+        </div> 
+       <div class="form-row">
+          <input type="number" ng-model="phone" class="text-input--underbar width-full rtl" placeholder="شماره تلفن">
+        </div>
+
+        <div class="form-row">
+            <input type="password" ng-model="password" class="text-input--underbar width-full rtl" placeholder="کلمه ی عبور">
+        </div>
+         <div class="form-row">
+            <input type="password"  ng-model="ConfPassword" class="text-input--underbar width-full rtl" placeholder="تکرار کلمه ی عبور">
+        </div>
+
+      <div class="vspc form-row mt30">
+          <ons-button ng-click="submit()" modifier="large--cta">به دمپخت بپیوندید</ons-button>
+      </div>
+        
+    </div>
+  </form>
+</ons-page> 

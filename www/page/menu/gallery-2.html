@@ -1,0 +1,43 @@
+<dir-tabbar></dir-tabbar>
+<div style="padding-top:0px;" class="food">
+        <ons-page modifier="shop-details">
+            <ons-toolbar modifier="transparent">
+              <div class="right">
+                <ons-toolbar-button><ons-icon icon="ion-ios-chatboxes" style="color: white"></ons-icon></ons-toolbar-button>
+              </div>
+              <div class="left">
+                <a href="#/menu"><ons-toolbar-button><ons-icon icon="ion-arrow-left-c" style="color: white; font-size: 28px;" fixed-width="false"></ons-icon></ons-toolbar-button></a>
+              </div>
+            </ons-toolbar>
+
+            <div class="card">
+                <img src="img/test/25Jun2012_10-14-01chelo_kebab_sultani.jpg">
+                <div class="card-name">چلو کباب در باری </div>
+                <div class="card-desc">بهترین لذیذترین ها با دمپخت</div>
+            </div>
+            <div class="rating"><div class="rating-num">
+                <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+                <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+                <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+                <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+                <ons-icon icon="fa-star-half" fixed-width="false"></ons-icon>
+                4.5
+            </div></div>
+
+            <gallery-dir>
+                <ons-row class="gallery-list" style="margin-top:1px;" >
+                    <a ng-repeat="item in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"   href="img/test/g/{{item}}.jpg"><img src="img/test/g/{{item}}.jpg"></a>
+                    <a ng-repeat="item in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"   href="img/test/g/{{item}}.jpg"><img src="img/test/g/{{item}}.jpg"></a>
+                </ons-row>
+            </gallery-dir>
+                   
+        </ons-page>
+            
+    </div>
+    <style>
+    .page__content {
+        padding-top: 0 !important; 
+    }
+    </style>
+
+

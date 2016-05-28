@@ -1,0 +1,64 @@
+<ons-page class="comment">
+    <ons-toolbar>
+        <div class="left" ng-click="goBack()"><ons-toolbar-button><ons-icon icon="ion-ios-arrow-left" size="25px" style="padding-top:10px;"></ons-icon></ons-toolbar-button></div>
+        <div class="center">نظر دادن به این غذا</div>
+    </ons-toolbar>
+    <p class="comment-desc">
+       شما می توانید نظر و رای خود را نسبت به این غذا بیان کنید 
+    </p>
+    <div class="rating-cm" rate="{{rate}}"><span class="fa fa-star-o" ng-click="rate_f(5)"></span><span class="fa fa-star-o"  ng-click="rate_f(4)"></span><span class="fa fa-star-o"  ng-click="rate_f(3)"></span><span class="fa fa-star-o"  ng-click="rate_f(2)"></span><span class="fa fa-star-o"  ng-click="rate_f(1)"></span></div></ons-list-item>
+        <ons-list modifier="inset" style="margin-top: 10px">
+        <ons-list-item class="to-wrapper">
+            <ons-list-item>
+            <textarea ng-model="comment" class="textarea textarea--transparent" placeholder="نظر خود را در مورد این غذا بیان کنید" style="width: 100%; height: 100px;"></textarea>
+            </ons-list-item>
+        </ons-list>
+
+        <div style="padding: 10px 9px">
+            <ons-button modifier="large" ng-click="submit()" style="margin: 0 auto;">
+                ثبت نظر 
+            </ons-button>
+        </div>
+</ons-page>
+
+
+<ons-template id="login.html">
+  <ons-dialog var="dialog" cancelable>
+
+    <ons-toolbar inline>
+      <div class="center">
+        برای نظر دادن وارد شوید
+      </div>
+    </ons-toolbar>
+  <quick-login>
+        <p>
+        <input ng-model="username" placeholder="ایمیل یا شماره همراه" id="username" class="text-input">
+        </p>
+
+        <p>
+        <input ng-model="password"  type="password" placeholder="کلمه عبور" id="username" class="text-input">
+        </p>
+
+        <p>
+        <ons-button modifier="large" ng-click="submit();">ورود</ons-button>
+        </p>
+        <p ng-click="go('/register')">
+            عضویت در دمپخت
+        </p>
+   </quick-login>
+  </ons-dialog>
+</ons-template>
+</div>
+<style>
+.page__content {
+    padding-top: 0 !important; 
+}
+ons-dialog:not([modifier='material']) p {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+input {
+  width: 100%;
+}
+</style>

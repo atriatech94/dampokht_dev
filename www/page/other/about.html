@@ -1,0 +1,17 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="setting">
+    <ons-toolbar>
+        <div ng-click="go('/more')" class="left"><ons-back-button><a>بازگشت</a></ons-back-button></div>
+        <div class="center"> در باره دمپخت </div>
+    </ons-toolbar>
+    <div class="more_pic">
+        <img  ng-src="{{ base_img }}">
+        <h3> مجموعه دمپخت </h3>
+        <p> بهترین ها در خدمت شما </p>
+    </div>
+    <div class="contain">
+        <h3>  در باره دمپخت</h3>
+        <p ng-bind-html="description"></p>
+    </div>
+
+</ons-page>

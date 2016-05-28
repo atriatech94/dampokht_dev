@@ -1,0 +1,51 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="setting">
+    <ons-toolbar>
+        <div ng-click="go('/myprofile')" class="left"><ons-back-button><a >پروفایل من</a></ons-back-button></div>
+        <div class="center">تنظیمات</div>
+    </ons-toolbar>
+    
+      <ons-row class="profile-wrapper">
+          <ons-col width="60px" class="profile-image-wrapper"> 
+              <img ng-if="picname==''" ng-src="img/user_men.jpg" class="profile-image">
+              <img ng-if="picname!=''" ng-src="{{base_img + picname}}" class="profile-image">
+          </ons-col>
+          <ons-col>
+              <div class="profile-name">{{name}}</div>
+              <div class="profile-email">{{email}}</div>
+          </ons-col>
+
+    </ons-row>
+
+    <div class="settings-header">اعلان ها </div>
+
+    <ons-list modifier="inset" class="settings-list">
+        <ons-list-item> پیام کوتاه
+            <ons-switch ng-model="sms1"  ng-click="sms()" modifier="list-item"  ></ons-switch>
+        </ons-list-item>
+        <ons-list-item> اعلان ها 
+            <ons-switch ng-model="notification1" ng-click="notification()" modifier="list-item"></ons-switch>
+            
+         </ons-list-item>
+    </ons-list>
+
+    <div class="settings-header"> اطلاعات کاربری</div>
+
+    <ons-list modifier="inset" class="settings-list">
+        <ons-list-item ng-click="go('/myprofile/change_info')" modifier="chevron"> ویرایش اطلاعات کاربری </ons-list-item>
+        <ons-list-item ng-click="go('/myprofile/change_pass')" modifier="chevron"> تغییر کلمه ی عبور </ons-list-item>
+    </ons-list>
+
+    <br>
+    <ons-list modifier="inset" class="settings-list">
+          <ons-list-item ng-click="exit()" modifier="tappable">
+            <ons-icon icon="ion-log-out" style="opacity: 0.8"></ons-icon>
+            <a >خروج از این حساب کاربری</a>
+          </ons-list-item>
+    </ons-list>
+</ons-page>
+<style>
+.setting .page__content{
+    padding-top: 44px;
+}
+</style>

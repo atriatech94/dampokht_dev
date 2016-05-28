@@ -1,0 +1,61 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="order_list support_one">
+    <ons-toolbar> 
+        <div class="left" ng-click="go('myprofile/order_list')" ><ons-back-button></ons-back-button></div>
+        <div class="center">#{{ order[0].id }} سفارش</div>
+    </ons-toolbar>
+    <!--=============================================---->
+    <ons-list-item class="f14 rtl">
+        <ons-row><ons-col>تاریخ سفارش : </ons-col><ons-col class="f13 text-left " width="170px">{{ order[0].date }}</ons-col></ons-row>
+    </ons-list-item>   
+    <ons-list-item class="f14 rtl">
+        <ons-row><ons-col>وضعیت سفارش : </ons-col>
+           <ons-col ng-if="order[0].order_status == 1" class="f13 text-left">درحال بررسی</ons-col>
+           <ons-col ng-if="order[0].order_status == 2" class="f13 text-left">تایید شده</ons-col>
+           <ons-col ng-if="order[0].order_status == 3" class="f13 text-left">ارسال شده</ons-col>
+           <ons-col ng-if="order[0].order_status == 4" class="f13 text-left">تحویل شده</ons-col>
+           <ons-col ng-if="order[0].order_status == 5" class="f13 text-left">لغو شده</ons-col>
+        
+      </ons-row>
+    </ons-list-item>  
+    <ons-list-item ng-if="order[0].order_status == 5" class="f14 rtl">
+        <ons-row style="color:red;" ><ons-col>دلیل رد سفارش : </ons-col><ons-col  class="f13 text-left">{{ order[0].deny_reason }}</ons-col></ons-row>
+    </ons-list-item> 
+   <ons-list-item class="f14 rtl">
+        <ons-row><ons-col >نوع پرداخت : </ons-col>
+               <ons-col ng-if="order[0].payment_type == 0" class="f13 text-left">استفاده از امتیاز</ons-col>
+               <ons-col ng-if="order[0].payment_type == 1" class="f13 text-left">پرداخت آنلاین</ons-col>
+               <ons-col ng-if="order[0].payment_type == 2" class="f13 text-left">پرداخت در محل</ons-col>
+               <ons-col ng-if="order[0].payment_type == 3" class="f13 text-left">پرداخت از اعتبار کاربری</ons-col>
+        </ons-row>
+    </ons-list-item>  
+    <!--=============================================---->  
+    <ons-list-header class="rtl f18 p10"> لیست خوراک ها </ons-list-header>
+     <ons-list-item modifier="tappable" ng-repeat="detail in order_detail">
+         <ons-row>
+             <ons-col class="f14" > {{detail.name}} </ons-col>
+             <ons-col width="53px" class="f14">{{detail.quantity}} عدد</ons-col>
+             <ons-col class="total f14 text-left" width="88px">{{detail.quantity * detail.price | currency : '' : 0 }} <i>تومان</i></ons-col>
+         </ons-row>
+    </ons-list-item>
+    <!--======================================================------>
+    <ons-list-header class="rtl f18 p10"> آدرس </ons-list-header>
+    <div class="text_des f14 text-right">{{address[0].address}} </div>
+    <!--======================================================------>
+    <ons-list-header class="rtl f18 p10"> هزینه ها </ons-list-header>
+    
+    <ons-list-item class="f14 rtl">
+        <ons-row><ons-col>مبلغ کل سفارش : </ons-col><ons-col class="f13 text-left"> {{order[0].total_price | currency : '' : 0 }} تومان </ons-col></ons-row>
+    </ons-list-item>   
+    <ons-list-item class="f14 rtl">
+        <ons-row><ons-col>مالیات بر ارزش افزوده : </ons-col><ons-col class="f13 text-left">{{order[0].tax | currency : '' : 0 }} تومان</ons-col></ons-row>
+    </ons-list-item>  
+    <ons-list-item class="f14 rtl">
+        <ons-row><ons-col> تخفیف : </ons-col><ons-col class="f13 text-left">{{order[0].discount | currency : '' : 0 }} تومان</ons-col></ons-row>
+    </ons-list-item>  
+    <ons-list-item class="f14 rtl">
+        <ons-row><ons-col >مبلغ قابل پرداخت : </ons-col><ons-col class="f13 text-left">{{order[0].final_price | currency : '' : 0 }}  تومان</ons-col></ons-row>
+    </ons-list-item>
+    <!--======================================================------>
+    <button ng-click="go('myprofile/order_list')" class="button--large--cta" >بازگشت</button>
+</ons-page>

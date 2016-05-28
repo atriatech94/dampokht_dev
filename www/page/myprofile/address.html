@@ -1,0 +1,34 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="address">
+    <ons-toolbar>
+        <div class="left" ng-click="go('/myprofile')"><ons-back-button><a>پروفایل من</a></ons-back-button></div>
+        <div class="center">آدرس ها</div>
+    </ons-toolbar>
+    <div class="address_list" >
+        <ons-list >
+
+            <ons-list-header class="rtl">  آدرس های من </ons-list-header>
+
+            <ons-list-item modifier="tappable" ng-repeat="address in addressses">
+                <label class="checkbox checkbox--list-item">
+                    <ons-row>
+                        <ons-col >
+                            {{address.address | limitTo : 30 }}...
+                        </ons-col>
+                        <ons-col width="35px" ng-click="delete_address(address.id)" class="options">
+                            <ons-icon size="28px" class="option_icon" icon="ion-ios-close-empty" width: style="color:#b41a1a"></ons-icon>
+                        </ons-col>
+                         <ons-col ng-if="address.type == 1" width="30px"  class="options" ng-click="go('/edit_address/'+address.id+'/'+address.type)">
+                         <ons-icon size="14px" class="option_icon" icon="ion-edit" style="color:#83c32c"></ons-icon>
+                        </ons-col>
+                         <ons-col ng-if="address.type == 2" width="30px"  class="options" ng-click="go('/edit_address_map/'+address.id+'/'+address.type)">
+                         <ons-icon size="14px" class="option_icon" icon="ion-edit" style="color:#83c32c"></ons-icon>
+                        </ons-col>
+                    </ons-row>
+                </label>
+            </ons-list-item>
+
+            <ons-list-item ng-click="go('/myprofile/new_address')" modifier="chevron"><ons-icon icon="fa-location-arrow" size="20px"></ons-icon> آدرس جدید اضافه کنید </ons-list-item>
+        </ons-list>
+    </div>
+</ons-page>

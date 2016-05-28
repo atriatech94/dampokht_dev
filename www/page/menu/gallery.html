@@ -1,0 +1,37 @@
+<dir-tabbar></dir-tabbar>
+<div style="padding-top:0px;" class="food">
+        <ons-page modifier="shop-details">
+            <ons-toolbar modifier="transparent">
+              <div class="right" ng-click="go('/comment/'+food_id+'/'+branch_id)">
+                <ons-toolbar-button><ons-icon icon="ion-ios-chatboxes" style="color: white"></ons-icon></ons-toolbar-button>
+              </div>
+              <div class="left" ng-click="go('/food/'+food_id+'/'+branch_id)">
+                <a><ons-toolbar-button><ons-icon icon="ion-arrow-left-c" style="color: white; font-size: 28px;" fixed-width="false"></ons-icon></ons-toolbar-button></a>
+              </div>
+            </ons-toolbar>
+
+            <div class="card">
+                <img ng-src="{{ base_img + food[0].picname }}">
+                <div class="card-name">{{ food[0].name }} </div>
+                <div class="card-desc" ng-if = "food[0].special == 1">پیشنهاد ویژه دمپخت</div>
+            </div>
+            
+
+              <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div>  
+
+            <gallery-dir>
+                <ons-row id="lightgallery" class="gallery-list" style="margin-top:1px;" >
+                    <a lightgallery ng-repeat="item in food_gallery"  ng-href="{{ base_img + item.picname }}"><img ng-src="{{ base_imgx + item.picname }}"></a>
+                </ons-row>
+            </gallery-dir>
+                   
+        </ons-page>
+            
+    </div>
+    <style>
+    .page__content {
+        padding-top: 0 !important; 
+    }
+    </style>
+
+

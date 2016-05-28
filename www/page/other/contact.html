@@ -1,0 +1,44 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="setting">
+    <ons-toolbar>
+        <div ng-click="go('/more')" class="left"><ons-back-button><a >بازگشت</a></ons-back-button></div>
+        <div class="center"> تماس با دمپخت </div>
+    </ons-toolbar>
+    <div class="contain">
+        <h3> تماس با دمپخت </h3>
+        <p> کاربر گرامی، لطفاً در صورت وجود هرگونه سوال یا ابهامی، پیش از ارسال ایمیل یا تماس تلفنی با دمپخت بخش پرسش‏های متداول را ملاحظه فرمایید و در صورتی که پاسخ خود را نیافتید، با ما تماس بگیرید.</p>
+     <p> در صورت وجود مشکل در سفارش ها یا پرداخت ها از بخش پشتیبانی در پنل کاربری اقدام کنید.</p>
+        <div class="address_icon">
+            <a href=""><p><i class="ion-email"></i>   پست الکترونیکی : </p> <p> {{contact_info[0].email1}} </p><p> {{contact_info[0].email2}}  </p> </a>
+            <a href=""><p><i class="ion-ios-telephone"></i>  شماره های تماس : </p>
+                <p> {{contact_info[0].tell1}} </p><p> {{contact_info[0].tell2}} </p> <p>  {{contact_info[0].tell3}}</p>  </a>
+            <a href=""><p><i class="fa fa-location-arrow"></i> آدرس : </p><p>{{contact_info[0].address}} </p> </a>
+        </div>
+    </div>
+    
+     <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div>
+    <ons-list modifier="inset" style="margin-top: 10px;margin: 0 20px;">
+        
+        <ons-list-item>
+          <input type="text" ng-model="name" class="text-input text-input--transparent" placeholder="نام " style="width: 100%">
+        </ons-list-item>
+        
+        <ons-list-item>
+          <input type="text" ng-model="phone_or_email" class="text-input text-input--transparent" placeholder="ایمیل" style="width: 100%">
+        </ons-list-item>
+        
+          <ons-list-item>
+          <input type="text" ng-model="phone" class="text-input text-input--transparent" placeholder="شماره تماس (اختیاری)" style="width: 100%">
+        </ons-list-item>
+        
+        <ons-list-item>
+          <input type="text" ng-model="title" class="text-input text-input--transparent" placeholder="عنوان" style="width: 100%">
+        </ons-list-item>
+
+        <ons-list-item>
+          <textarea ng-model="text" class="textarea textarea--transparent" placeholder="متن" style="width: 100%; height: 100px;"></textarea>
+        </ons-list-item>
+    </ons-list>
+    
+    <div style="padding: 20px 20px"><ons-button modifier="large" ng-click="submit()" style="margin: 0 auto;">ارسال</ons-button></div>
+</ons-page>

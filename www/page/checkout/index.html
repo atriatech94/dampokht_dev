@@ -1,0 +1,65 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="checkout">
+    <ons-toolbar>
+        <div class="left" ng-click="go('buybasket')"><ons-toolbar-button><ons-icon icon="ion-ios-arrow-left" size="25px" style="padding-top:10px;"></ons-icon></ons-toolbar-button></div>
+        <div class="center">تایید نهایی و پرداخت</div>
+    </ons-toolbar>
+    <div class="checkout-main">
+        <!--============div==============-->
+        <ons-list >
+            <ons-list-header class="rtl"> انتخاب آدرس : </ons-list-header>
+             <ons-list-item modifier="tappable" ng-repeat="address in addresses">
+                <label class="checkbox checkbox--list-item">
+                    <input class="checkbox__input" ng-click="addr(address.id)" type="radio" name="address" ng-value="{{address.id}}" >
+                    <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+                    {{address.address}}
+                </label>
+            </ons-list-item>
+    
+            <ons-list-item ng-click="go('/myprofile/new_address')" modifier="chevron"><ons-icon icon="fa-location-arrow" size="20px"></ons-icon> آدرس جدید اضافه کنید </ons-list-item>
+        </ons-list>
+        <!--==========================-->
+        <ons-list ng-init="total=0" class="checkout-bill">
+            <ons-list-header class="rtl"> فاکتور  : </ons-list-header>
+            <ons-list-item modifier="tappable" ng-repeat="food in foods">
+                <ons-row ng-init="$parent.total = $parent.total + (food.price * food.quantity)">
+                    <ons-col>{{food.name}}</ons-col>
+                    <ons-col width="40px">{{food.quantity}}</ons-col>
+                    <ons-col class="total" width="100px">{{ food.price | currency : '' : 0 }} <i>تومان</i></ons-col>
+                </ons-row>
+            </ons-list-item>
+            <div class="count_cust">
+                <div class="rows"><div class="name">مبلغ سفارش</div><div class="cost">{{ total | currency : '' : 0 }} <i>تومان</i></div><div class="clearfix"></div></div>
+                <div class="rows"><div class="name">مالیات بر ارزش افزوده</div><div class="cost">{{ total * 0.09 | currency : '' : 0 }} <i>تومان</i></div><div class="clearfix"></div></div>
+                <div class="rows"><div class="name">مبلغ قابل پرداخت</div><div class="cost"><span>{{ ((total + total * 0.09) - c_off) | currency : '' : 0  }}</span> تومان </div><div class="clearfix"></div></div>
+                <div ng-if="p != 0" class="rows off-block"><div class="name">تخفیف بابت امتیاز</div><div class="cost">{{ c_off | currency : '' : 0  }} <i>تومان</i></div><div class="clearfix"></div></div>
+                <div class="clear"></div>
+            </div>
+            <div class="count_cust2"> 
+                <ons-row ng-if="p != 0" class="p10">
+                    <ons-col class="name text-right"> امتیاز شما :</ons-col>
+                   <ons-col class="cost"> {{profile[0].point}}</ons-col>
+                </ons-row>
+                <ons-row  class="p10">
+                   <ons-col class="name text-right"> اعتبار شما :</ons-col>
+                    <ons-col class="cost"> {{ profile[0].credit | currency : '' : 0 }} <i>تومان</i></ons-col>
+                </ons-row>
+            </div>
+            <ons-button ng-if="p != 0 && c_off == 0"  class="rate-faktor" ng-click="off(profile[0].point)" modifier="outline">محاسبه ی تخفیف و کسر از فاکتور</ons-button>
+            <ons-button ng-if="p != 0 && c_off != 0"  class="rate-faktor" ng-click="off(profile[0].point)" modifier="outline">حذف تخفیف از فاکتور</ons-button>
+        </ons-list>
+        <!--==========================-->
+        <ons-list-header class="rtl"> توضیحات سفارش : </ons-list-header>
+        <div class="text_des"><textarea class="description" ng-model="description" placeholder="توضیحات سفارش را اینجا بنویسید "></textarea></div>
+        <!--==========================-->
+        <ons-list-header ng-if="zero == 0" class="rtl"> نحوه ی پرداخت : </ons-list-header>
+        <ons-list-header ng-if="zero == 1" class="rtl"> ثبت سفارش : </ons-list-header>
+        <ons-row class="checkout_btn"> 
+            <ons-col ng-if="zero == 0" width="100%"> <ons-button ng-click="submit(1)" modifier="large--cta"> پرداخت از طریق درگاه بانک </ons-button> </ons-col>
+            <ons-col ng-if="zero == 0" width="100%"> <ons-button ng-click="submit(2)" modifier="large--cta">پرداخت در محل </ons-button> </ons-col>
+            <ons-col ng-if="zero == 0" width="100%"> <ons-button ng-click="submit(3)" modifier="large--cta"> پرداخت با اعتبار کاربری </ons-button> </ons-col>
+            <ons-col ng-if="zero == 1" width="100%"> <ons-button ng-click="submit(0)" modifier="large--cta"> ثبت نهایی سفارش </ons-button> </ons-col>
+         </ons-row>
+        <!--==========================-->
+    </div>
+</ons-page>

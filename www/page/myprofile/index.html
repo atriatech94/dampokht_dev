@@ -1,0 +1,50 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="myprofile">
+      <ons-toolbar>
+        <div ng-click="go('/more')" class="left"><a><ons-back-button>بازگشت</ons-back-button></a></div>
+        <div class="center">حساب کاربری</div>
+        <div ng-click="go('/myprofile/setting')" class="right">
+          <ons-toolbar-button><ons-icon icon="ion-gear-a" style="font-size: 28px;padding-top: 6px;"></ons-icon></ons-toolbar-button>
+        </div>
+      </ons-toolbar>
+
+      <div class="profile-card">
+
+        <img ng-if="!picname" ng-src="img/user_men.jpg" class="profile-image">
+        <img ng-if="picname" ng-src="{{ base_img + picname }}" class="profile-image">
+        <div class="profile-name">{{name}}</div>
+        <div class="profile-id">{{email}}</div>
+        <div class="profile-desc">شما هم اکنون {{profile[0].point}} امتیاز در دمپخت دارید</div>
+
+      </div>
+
+      <ons-list>
+          <ons-list-item>
+              <ons-row>
+                  <ons-col class="info-col">
+                      <div class="info-num">{{profile[0].credit | currency : '' : 0  }}       </div>
+                      <div class="info-unit"> موجودی (تومان) </div>
+                  </ons-col>
+
+                  <ons-col class="info-col">
+                      <div class="info-num">{{profile[0].point}}</div>
+                      <div class="info-unit"> امتیاز </div>
+                  </ons-col>
+
+              </ons-row>
+            
+          </ons-list-item>
+    </ons-list>
+
+    <ons-list modifier="inset" style="margin-top: 10px" >
+        <ons-list-item  ng-click="go1('/myprofile/order_list')" modifier="chevron"><a> سفارش ها </a></ons-list-item>
+        <ons-list-item  ng-click="go('/myprofile/setting')" modifier="chevron"><a> تنظیمات  </a></ons-list-item>
+        <ons-list-item  ng-click="go('/myprofile/charje')" modifier="chevron"><a> شارژ حساب  کاربری </a></ons-list-item>
+        <ons-list-item  ng-click="go('/myprofile/support')" modifier="chevron"><a> پشتیبانی </a></ons-list-item>
+        <ons-list-item  ng-click="go('/favourite')" modifier="chevron"><a> لیست علاقه مندی ها </a></ons-list-item>
+        <ons-list-item  ng-click="go('/myprofile/address')" modifier="chevron"><a> آدرس های من </a></ons-list-item>
+        <ons-list-item  ng-click="exit()" modifier="chevron"><a> خروج </a></ons-list-item>
+    </ons-list>
+        
+    <br>
+</ons-page>

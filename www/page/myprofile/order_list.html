@@ -1,0 +1,43 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="order_list">
+    <ons-toolbar>
+        <div class="left" ng-click="go('/myprofile')"><ons-back-button></ons-back-button></div>
+        <div class="center">سفارش های من</div>
+        <div class="right" ng-click="refresh()"><ons-icon icon="ion-ios-refresh-empty" style="vertical-align: -15px;color: #0D5DAB; font-size: 28px ; padding-right:15px;"></ons-icon></div>
+    </ons-toolbar>
+   
+    <ons-list class="plan-list">
+          <ons-list-item modifier="chevron" ng-click="detail(item.id)" class="plan" ons-lazy-repeat="MyDelegate" >
+            <ons-row>
+              <ons-col width="80px" class="plan-left">
+                <div ng-show="item.date==''">
+                  <div class="plan-date"><ons-icon icon='fa-spinner' spin='true'></ons-icon></div>
+                </div>
+                  <div class="plan-date">{{ item.name }}</div>
+                  <div class="plan-duration">{{ item.id }}</div>
+              </ons-col>
+
+              <ons-col ng-if="item.order_status == 1"  width="6px" class="plan-center status-1" ></ons-col>
+              <ons-col ng-if="item.order_status == 2"  width="6px" class="plan-center status-3" ></ons-col>
+              <ons-col ng-if="item.order_status == 3"  width="6px" class="plan-center status-2" ></ons-col>
+              <ons-col ng-if="item.order_status == 4"  width="6px" class="plan-center status-4" ></ons-col>
+              <ons-col ng-if="item.order_status == 5"  width="6px" class="plan-center status-5" ></ons-col>
+
+              <ons-col class="plan-right">
+                <div ng-show="item.date==''">
+                    <div class="plan-name"><ons-icon icon='fa-spinner' spin='true'></ons-icon> درحال دریافت اطلاعات </div>
+                </div>
+                <div class="plan-name">{{ item.date }}</div>
+                <div class="plan-info">
+                    <div><ons-icon icon="ion-social-usd-outline"></ons-icon>{{ item.price | currency : '' : 0   }} تومان</div>
+                    <div ng-if="item.order_status == 1" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>درحال بررسی</div>
+                    <div ng-if="item.order_status == 2" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>تایید شده</div>
+                    <div ng-if="item.order_status == 3" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>ارسال شده</div>
+                    <div ng-if="item.order_status == 4" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>تحویل شده</div>
+                    <div ng-if="item.order_status == 5" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>لغو شده</div>
+                </div>
+              </ons-col>
+            </ons-row>
+        </ons-list-item>
+   </ons-list> 
+</ons-page>

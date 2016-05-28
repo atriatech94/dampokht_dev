@@ -1,0 +1,62 @@
+<dir-tabbar></dir-tabbar>
+<ons-page >
+    <ons-toolbar>
+        <div class="left"><ons-back-button><a href="#/myprofile/address">آدرس ها </a></ons-back-button></div>
+        <div class="center">ویرایش آدرس </div>
+    </ons-toolbar>
+    <!---=======================================================---->
+     <div id="method-2" >
+		  <mapedit-dir >
+		   	<p class="address_p" style="margin-top:10px">  ابتدا شعبه را انتخاب کنید سپس مکان خود را روی نقشه انتخاب کنید ، توجه داشته باشید که مکان شما باید در محدوده مشخص شده شعبه باشد برای این کار می توانید از دکمه مکان یاب یا جستجوی نقشه استفاده کنید.  </p>	  
+			<div class="map_block" >
+			   <section id="place-on-map"> 
+                    <!--=================  ======================--->
+                    <select style="height: 50px;" class="width-full rtl add_branch">
+                        <option ng-selected="branch_now == option_1.id" ng-repeat="option_1 in branches" value="{{option_1.id}}">{{option_1.city}} - {{option_1.name}}</option>
+                    </select>
+                    <!--==================  =====================--->
+					<header class="section-title">
+						<h2>مکان خود را بر روی نقشه مشخص کنید</h2>
+					</header>
+					<div class="form-group">
+						<input type="text" class="form-control" id="address-map" name="address" placeholder="آدرس محدوده خود را وارد کنید . ">
+					</div>
+					<div class="lucent">
+						<p class="note">محدوده خود را جستجو کنید</p>
+					</div>
+					<!-- /.form-group -->
+					
+					<div class="show_gmap">
+                        <div id="submit-map" lat="29.36" long="52.33" class="googleMapedit"></div>
+                        <div class="now_me"></div>
+                   </div>
+					 <div class="lucent">
+						<p class="note">می توانید با جا به جا کردن پوینتر مکان خود را تغییر دهید .</p>
+					</div>
+					<div style="display:none" class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" id="latitude" name="latitude" readonly>
+							</div>
+							<!-- /.form-group --> 
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" id="longitude" name="longitude" readonly>
+							</div>
+							<!-- /.form-group --> 
+						</div>
+					</div>
+				</section>
+	 		  <!-- /#place-on-map -->
+                
+			</div>
+		
+              <div class="map_block"> <div class="vspc form-row"><ons-button ng-click="submit_map()" modifier="large--cta">ویرایش آدرس </ons-button> </div> </div>
+              <br><br>
+         </mapedit-dir>
+	</div>
+
+    <!---=======================================================---->
+
+</ons-page>

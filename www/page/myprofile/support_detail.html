@@ -1,0 +1,52 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="order_list support_one">
+    <ons-toolbar>
+        <div class="left" ng-click="go('/myprofile/support')"><ons-back-button></ons-back-button></div>
+        <div class="center">#{{id}} درخواست شماره</div>
+        <div class="right" ng-click="show('login.html')"><ons-icon icon="ion-ios-paperplane-outline" style="vertical-align: -15px;color: #0D5DAB; font-size: 28px ; padding-right:15px;"></ons-icon></div>
+    </ons-toolbar>
+    <div class="tiket_list">
+        <div class="tiket_one user profile-wrapper">
+		<!--========================================tiketone -----------===============-->
+            <ons-row ng-repeat="ticket in tickets" class="profile-wrapper2">
+                <ons-col width="60px" ng-if="!ticket.a_name" class="profile-image-wrapper">
+                    <img ng-if="!ticket.picname" ng-src="img/user_men.jpg" class="profile-image">
+                    <img ng-if="ticket.picname" ng-src="{{ base_img + ticket.picname }}" class="profile-image">
+                </ons-col>
+                
+                 <ons-col width="60px" ng-if="ticket.a_name" class="profile-image-wrapper">
+                    <img ng-if="!ticket.a_picname" ng-src="img/user_men.jpg" class="profile-image">
+                    <img ng-if="ticket.a_picname" ng-src="{{ base_img_a + ticket.a_picname }}" class="profile-image">
+                </ons-col>
+                
+                <ons-col>
+                    <div ng-if="ticket.a_name" class="profile-name">{{ticket.a_name}}</div>
+                    <div ng-if="!ticket.a_name" class="profile-name">{{ticket.name}}</div>
+                    <div ng-if="!ticket.a_name" class="profile-email">کاربر</div>
+                    <div ng-if="ticket.a_name" class="profile-email">{{ticket.post}}</div>
+                    <div class="profile-date"> {{ticket.date}}</div>
+                </ons-col>
+                <div class="tiket_text" data-ng-bind-html="ticket.messages"></div>
+            </ons-row>  
+		
+        </div>
+    </div>
+</ons-page>
+
+ <ons-template id="login.html">
+     <ons-dialog var="dialog" cancelable>
+         <ons-toolbar inline>
+             <div class="center">  پاسخ به این درخواست </div>
+         </ons-toolbar>
+         <ticket-answer>
+             <label class="support_txt"><textarea ng-model="text" placeholder="پاسخ خود را بنویسید" width="100%" rows="3"></textarea></label>
+             <label class="supoort_btns">
+                 <ons-button  ng-click="send_answer();">ارسال</ons-button>
+                 <ons-button  ng-click="close_modal();">لغو</ons-button>
+             </label>
+         </ticket-answer>
+  </ons-dialog>
+</ons-template>
+<style>
+    
+</style>

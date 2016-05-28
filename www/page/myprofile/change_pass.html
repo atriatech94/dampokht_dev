@@ -1,0 +1,26 @@
+<dir-tabbar></dir-tabbar>
+<ons-page>
+    <ons-toolbar>
+        <div ng-click="go('/myprofile/setting')" class="left"><ons-back-button><a >تنظیمات</a></ons-back-button></div>
+        <div class="center">تغییر کلمه عبور</div>
+    </ons-toolbar>
+       <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div>
+    <div class="formarea">
+        
+        <div class="form-row">
+            <input type="password" ng-model="current_pass" class="text-input--underbar width-full rtl" placeholder="کلمه ی عبور فعلی" value="">
+        </div>
+        <div class="form-row">
+            <input type="password"  ng-model="new_pass" class="text-input--underbar width-full rtl" placeholder="کلمه ی عبور جدید" value="">
+        </div>
+        <div class="form-row">
+            <input type="password"  ng-model="new_conf_pass" class="text-input--underbar width-full rtl" placeholder="تکرار کلمه عبور جدید" value="">
+        </div>
+        
+        <div class="vspc form-row">
+            <ons-button ng-click="submit()" modifier="large--cta">تغییر کلمه ی عبور</ons-button>
+        </div>
+         
+    </div>
+
+</ons-page>

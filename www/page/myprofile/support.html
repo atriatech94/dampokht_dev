@@ -1,0 +1,36 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="order_list support_list">
+    <ons-toolbar>
+        <div class="left" ng-click="go('/myprofile')"><ons-back-button></ons-back-button></div>
+        <div class="center">درخواست های من</div>
+        <div class="right" >
+            <ons-icon icon="ion-ios-plus-empty" ng-click="go('/myprofile/support_new')" style="vertical-align: -16px;color:#0dab62 ; font-size: 28px ; padding-right:20px;"></ons-icon>
+            <ons-icon icon="ion-ios-refresh-empty" ng-click="refresh()" style="vertical-align: -17px;color:#0D5DAB ; font-size: 28px ; padding-right:15px;"></ons-icon>
+        </div>
+    </ons-toolbar> 
+    
+    <ons-list class="plan-list" >
+          <ons-list-item modifier="chevron" class="plan" ng-click="detail(item.id)" ons-lazy-repeat="MyDelegate" >
+            <ons-row>
+                 <ons-col ng-if="item.status == 0" width="6px" class="plan-center status-1" ></ons-col>
+                 <ons-col ng-if="item.status == 1" width="6px" class="plan-center status-2" ></ons-col>
+                 <ons-col ng-if="item.status == 2" width="6px" class="plan-center status-3" ></ons-col>
+                 <ons-col ng-if="item.status == 3" width="6px" class="plan-center status-4" ></ons-col>
+               
+                <ons-col class="plan-right">
+                    <div ng-show="item.subject==''" class="plan-name"><ons-icon icon='fa-spinner' spin='true'></ons-icon>  درحال دریافت اطلاعات </div> 
+                    <div ng-show="item.subject!=''" class="plan-name">{{ item.subject }}</div>   
+                    <div class="plan-info">
+                        <div ng-show="item.date==''" ><ons-icon icon="ion-ios-clock-outline"></ons-icon><ons-icon icon='fa-spinner' spin='true'></div>
+                        <div ng-show="item.date!=''"><ons-icon icon="ion-ios-clock-outline"></ons-icon>{{ item.date }}</div>
+                        <div ng-if="item.status == 0" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>در حال بررسی</div>
+                        <div ng-if="item.status == 1" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>پاسخ داده شده</div>
+                        <div ng-if="item.status == 2" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>پاسخ مشتری</div>
+                        <div ng-if="item.status == 3" ng-hide="a % 3 == 0"><ons-icon icon="ion-stats-bars"></ons-icon>بسته شده</div>
+                    </div>
+                </ons-col>
+            </ons-row>
+        </ons-list-item>
+    </ons-list>
+</ons-page>
+

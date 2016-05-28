@@ -1,0 +1,114 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="pt0">
+    <ons-toolbar>
+        <div class="left" ng-click="hback()"><ons-back-button></ons-back-button></div>
+        <div class="center">آدرس جدید</div>
+    </ons-toolbar>
+	<div class="navigation-bar" ng-init="show_case = '1' "  style="margin-top:44px;">
+          <div class="navigation-bar__center">
+            <!-- segment control -->
+            <div class="button-bar" style="width:200px; margin:8px auto 0;">
+              <div class="button-bar__item">
+                <input type="radio" name="navi-segment-a" ng-click="show_case = '2'" value="2">
+                <div class="button-bar__button">گرفتن از نقشه</div>
+              </div>
+                <div class="button-bar__item">
+                <input type="radio" name="navi-segment-a" ng-click="show_case = '1'" checked value="1">
+                  <div class="button-bar__button">نوشتن آدرس</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+	<div ng-if="show_case == '1' " id="method-1" >
+		
+		<div class="formarea">
+
+			<div class="form-row rtl"> 
+                <select style="height: 50px;" ng-model="address_info.branch"  ng-change="changeArea(address_info.branch)"  class="width-full rtl">
+                    <option value="">شعبه را انتخاب کنید</option>
+                    <option ng-repeat="option in branches_a" value="{{option.id}}">{{option.city}} - {{option.name}}</option>
+                </select>
+			</div>
+			
+			<div class="form-row rtl"> 
+                <select  style="height: 50px;" ng-model="address_info.area" class="width-full rtl">
+                    <option value="">محدوده را انتخاب کنید</option>
+                    <option ng-repeat="option in address_info.branch_area" value="{{option.id}}">{{option.area}}</option>
+                </select>
+			</div>
+			
+			 <div class="form-row"> 
+				<textarea ng-model="address_info.address1" class="textarea textarea--transparent rtl" placeholder="آدرس" style="width: 100%; height: 100px ;padding: 5px;border-bottom:1px solid #ddd"></textarea>
+			 </div>  
+			 <div class="form-row">
+				<input type="text" ng-model="address_info.code_posti" class="text-input--underbar width-full rtl" placeholder="کد پستی (اختیاری)" >
+			</div>    
+		   
+		  </div>
+		<div class="map_block"> <div class="vspc form-row"><ons-button ng-click="submit()" modifier="large--cta">افزودن آدرس جدید</ons-button> </div> </div>
+	</div>
+    <!---=======================================================---->
+    
+        <div  ng-if="show_case == '2'"  id="method-2">
+		  <map-dir>
+		   	<p class="address_p">  ابتدا شعبه را انتخاب کنید سپس مکان خود را روی نقشه انتخاب کنید ، توجه داشته باشید که مکان شما باید در محدوده مشخص شده شعبه باشد برای این کار می توانید از دکمه مکان یاب یا جستجوی نقشه استفاده کنید.  </p>	  
+			<div class="map_block">
+			   <section id="place-on-map"> 
+                    <!--=================  ======================--->
+                    <select style="height: 50px;" class="width-full rtl add_branch">
+                        <option value="">شعبه را انتخاب کنید</option>
+                        <option ng-repeat="option_1 in branches" value="{{option_1.id}}">{{option_1.city}} - {{option_1.name}}</option>
+                    </select>
+                    <!--==================  =====================--->
+					<header class="section-title">
+						<h2>مکان خود را بر روی نقشه مشخص کنید</h2>
+					</header>
+					<div class="form-group">
+						<input type="text" class="form-control" id="address-map" name="address" placeholder="آدرس محدوده خود را وارد کنید . ">
+					</div>
+					<div class="lucent">
+						<p class="note">محدوده خود را جستجو کنید</p>
+					</div>
+					<!-- /.form-group -->
+					
+					<div class="show_gmap">
+                        <div id="submit-map" lat="29.36" long="52.33" class="googleMap"></div>
+                        <div class="now_me"></div>
+                   </div>
+					 <div class="lucent">
+						<p class="note">می توانید با جا به جا کردن پوینتر مکان خود را تغییر دهید .</p>
+					</div>
+					<div style="display:none" class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" id="latitude" name="latitude" readonly>
+							</div>
+							<!-- /.form-group --> 
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control" id="longitude" name="longitude" readonly>
+							</div>
+							<!-- /.form-group --> 
+						</div>
+					</div>
+				</section>
+			  <!-- /#place-on-map -->
+                
+			</div>
+		
+		<div class="map_block"> <div class="vspc form-row"><ons-button ng-click="submit_map()" modifier="large--cta">افزودن آدرس جدید</ons-button> </div> </div>
+		<br><br>
+        </map-dir>
+	</div>
+
+    <!---=======================================================---->
+</ons-page>
+<style>
+
+#method-2 ,#method-1{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+</style>

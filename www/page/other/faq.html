@@ -1,0 +1,26 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="setting" id="faq">
+    <ons-toolbar>
+        <div class="left" ng-click="go('/more')"><ons-back-button><a>بازگشت</a></ons-back-button></div>
+        <div class="center"> سوالات متداول </div>
+    </ons-toolbar>
+    
+    <ons-navigator title="Navigator" var="myNavigator"> 
+          <!--================================---->
+            <ons-list >
+              <div class="faq" ng-repeat="group in faq">
+                  <ons-list-item ng-click="toggleGroup(group.id)" class="title" ng-class="{active:isGroupShown(group.id)}">
+                    <ons-icon icon="fa-times" class="icon_close" ng-if="isGroupShown(group.id)" style="color:rgb(227, 167, 167);"></ons-icon>
+                    <ons-icon icon="fa-plus" ng-if="!isGroupShown(group.id)"  style="color:#6fb51c"></ons-icon>
+                      {{group.question}}
+                  </ons-list-item>
+                  <ons-list-item class="item-accordion"  ng-show="isGroupShown(group.id)" > 
+                      {{group.question}}
+                  </ons-list-item>
+                  <ons-list-item class="item-accordion" ng-bind-html="group.answer"  ng-show="isGroupShown(group.id)" ></ons-list-item>
+
+              </div>
+            </ons-list>
+          <!--================================---->
+    </ons-navigator>
+</ons-page>

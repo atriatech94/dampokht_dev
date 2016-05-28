@@ -1,0 +1,12 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="center">ویدئو  {{food[0].name}}</div>
+        <div class="left" ng-click="goBack()"><ons-toolbar-button><ons-icon icon="ion-ios-arrow-left" size="25px" style="padding-top:10px;"></ons-icon></ons-toolbar-button></div>
+    </ons-toolbar>
+    <div class="video_block">
+        <video preload="none" poster="{{base_img + poster}}" width="100%" height="auto" controls>
+            <source ng-src="{{ base_vid }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</ons-page>

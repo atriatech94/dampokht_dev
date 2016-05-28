@@ -1,0 +1,15 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="setting" id="faq">
+    
+    <ons-toolbar>
+        <div class="left" ng-click="go('/more')" ><ons-back-button><a>بازگشت</a></ons-back-button></div>
+        <div class="center"> قوانین و مقررات </div>
+    </ons-toolbar>
+
+    <div class="law_one" ng-repeat="law in laws">
+        <h1>{{ law.title }}</h1>
+        <p ng-bind-html="law.text" ></p>
+        <div class="gheychi_b w100 mb30 mt30"></div>                 
+    </div>
+    
+</ons-page>

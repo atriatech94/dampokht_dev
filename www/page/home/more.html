@@ -1,0 +1,71 @@
+<dir-tabbar></dir-tabbar>
+<!--- =================================================================================--->
+<more-dir class="more-dir">
+    <ons-toolbar>
+        <div class="ons-css navigation-bar">
+            <div class="navigation-bar navigation-bar--android">
+                <div ng-click="go('/buybasket')" class="navigation-bar__left navigation-bar--android__left">
+                    <span class="toolbar-button navigation-bar__line-height basket_anim" >
+                        <i class="ion-ios-cart-outline rubberBand animated" ></i>
+                        <span class="back_txt rubberBand">{{ basket_size }}</span>                
+                    </span>
+                </div>
+                
+                <div class="navigation-bar__center navigation-bar--android__center">
+                    <div class="logo_img"></div>
+                </div>
+                
+                <div ng-click="go('/branch')" class="navigation-bar__right navigation-bar--android__right"   >
+                    <span class="toolbar-button--quiet toolbar-button--quiet2 navigation-bar__line-height"  >
+                        <i class="da-dish icon_list" style="font-size:26px;"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ons-toolbar>
+
+<!--- =================================================================================--->
+     <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div> 
+    <!--==================================================================================------>
+    <ons-page>
+        <!---=================================================================================--->
+        <div class="page__content ons-page-inner more" style="directon:ltr">
+            <div class="more_pic">
+                <img src="img/test/restaurant.jpeg">
+                <h3> مجموعه دمپخت </h3>
+                <p> بهترین ها در خدمت شما </p>
+            </div>
+            <!--=======================================================================================--->
+            <ons-list modifier="inset" style="margin-top: 10px">
+                <ons-list-item ng-if="login" modifier="chevron" ng-click="go('/myprofile')" ><ons-icon icon="ion-ios-speedometer" size="22px"></ons-icon> حساب کاربری </ons-list-item> 
+                <ons-list-item ng-if="!login" modifier="chevron" ng-click="go('/login')" ><ons-icon icon="ion-ios-undo" size="22px"></ons-icon>  ورود </ons-list-item> 
+                <ons-list-item ng-if="!login" modifier="chevron" ng-click="go('/register')" ><ons-icon icon="ion-ios-personadd" size="22px"></ons-icon>  عضویت </ons-list-item> 
+                <ons-list-item modifier="chevron" ng-click="go('/branch')"><ons-icon icon="ion-ios-browsers"  size="22px"></ons-icon> سفارش غذا </ons-list-item> 
+                <ons-list-item modifier="chevron" ng-click="go('/branches')"><ons-icon icon="ion-ios-home"  size="22px"></ons-icon> لیست شعب </ons-list-item> 
+                <ons-list-item modifier="chevron" ng-click="prompt()"><ons-icon icon="ion-ios-cloud-upload-outline"  size="22px"></ons-icon> ارسال دمپخت به دوستان </ons-list-item> 
+                <ons-list-item modifier="chevron" ng-click="go('/cooperation')" ><ons-icon icon="ion-ios-people" size="22px"></ons-icon> همکاری با دمپخت </ons-list-item> 
+                <ons-list-item modifier="chevron"  ng-click="go('/contact')" ><ons-icon icon="ion-ios-telephone-outline" size="22px"></ons-icon> تماس با دمپخت </ons-list-item> 
+                <ons-list-item modifier="chevron"  ng-click="go('/about')" ><ons-icon icon="ion-ios-mic-outline" size="22px"></ons-icon> در باره ی دمپخت </ons-list-item> 
+                <ons-list-item modifier="chevron"  ng-click="go('/law')" ><ons-icon icon="ion-ios-paper-outline" size="22px"></ons-icon> شرایط استفاده </ons-list-item> 
+                <ons-list-item modifier="chevron"  ng-click="go('/faq')" ><ons-icon icon="ion-help-circled" size="22px"></ons-icon> سوالات متداول </ons-list-item> 
+                <ons-list-item ng-if="login" modifier="chevron"  ng-click="exit()" ><ons-icon icon="ion-power" size="22px"></ons-icon> خروج از حساب کاربری </ons-list-item> 
+            </ons-list>
+            <!--=======================================================================================--->
+        </div>
+    </ons-page>
+</more-dir>
+<!--- =================================================================================--->
+<ons-template id="myPopover.html">
+    <ons-popover cancelable direction="down">
+        <div style="text-align: center;">
+             <ons-list>
+                    <pop-over>
+                    <ons-list-item ng-click="go('/login')" ng-if="login == 0" >ورود به حساب کاربری</ons-list-item>
+                    <ons-list-item ng-click="go('/register')" ng-if="login == 0" >عضویت در دمپخت</ons-list-item>
+                    <ons-list-item ng-if="login == 1" >{{ name }}</ons-list-item>
+                    <ons-list-item ng-if="login == 1" ng-click="logout()" >برون رفت</ons-list-item>
+                </pop-over>
+            </ons-list>
+        </div>
+    </ons-popover>
+</ons-template>

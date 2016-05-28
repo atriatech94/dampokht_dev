@@ -1,0 +1,111 @@
+<dir-tabbar></dir-tabbar>
+<!--- =================================================================================--->
+<favourite-dir>
+    <ons-toolbar>
+        <div class="ons-css navigation-bar">
+            <div class="navigation-bar navigation-bar--android">
+                
+                <div class="navigation-bar__left navigation-bar--android__left">
+                    <span ng-click="go('/buybasket')" class="toolbar-button navigation-bar__line-height basket_anim" >
+                        <i class="ion-ios-cart-outline rubberBand animated" ></i>
+                        <span class="back_txt rubberBand">{{ basket_size }}</span>                
+                    </span>
+                </div>
+                
+                <div class="navigation-bar__center navigation-bar--android__center">
+                    <div class="logo_img"></div>
+                </div>
+                
+                <div ng-click="go('/branch')" class="navigation-bar__right navigation-bar--android__right"   >
+                    <span class="toolbar-button--quiet toolbar-button--quiet2 navigation-bar__line-height"  >
+                        <i class="da-dish icon_list" style="font-size:26px;"></i>
+                    </span>
+                </div>
+                
+            </div> 
+        </div>
+    </ons-toolbar> 
+    <!--- =================================================================================--->
+     <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div> 
+    <!--==================================================================================------>
+    <ons-page>
+       <ons-list>
+           <!--==================== if branch not set ====================-->
+           <div id="not_branch" ng-if="branches.length == 0">
+               <p><i class="ion-ios-heart-outline"></i>
+                لیست علاقه مند های شما خالی است . 
+               </p>       
+           </div> 
+           <!--===========================================================--->
+          <div id="each_branch" ng-repeat="branch in branches"> 
+            <h3 class="title-ios rtl"  style="background-color: #F7F7F7;">{{branch.name}}</h3>
+            <div class="favurite pt10">
+
+                <ons-list-item ng-repeat="wish in wishes | filter:{ branch_id : branch.id } : true " modifier="" class="list-item-container">
+                  <ons-row>
+                    <ons-col width="95px">
+                      <img ng-src="{{base_img + wish.picname}}" class="thumbnail">
+                    </ons-col>
+                    <ons-col>
+                      <div class="name">{{wish.name}}</div>
+                            <div class="location">
+                                <div class="rating" rate="{{wish.rate  | number: 0}}"><span class="fa fa-star-o"></span><span  class="fa fa-star-o"></span><span  class="fa fa-star-o"></span><span  class="fa fa-star-o"></span><span  class="fa fa-star-o"></span></div>
+                            </div>
+                            
+                             <div class="desc">
+                                {{wish.price | currency : '' : 0  }}  تومان     
+                            </div>
+                      </ons-col>
+                    <ons-col ng-click="add_to_card(wish.id,wish.branch_id,wish.picname,wish.price,wish.name,branch.name)"  width="50px"><ons-icon icon="ion-ios-cart-outline"></ons-icon></ons-col>
+
+                    <ons-col ng-click="remove(wish.id,wish.branch_id)"  width="50px"><ons-icon icon="ion-ios-close-outline"></ons-icon></ons-col>
+                  </ons-row>
+                </ons-list-item>
+
+            </div>
+          </div>
+        </ons-list>
+         <div  id="mainList"></div>
+    </ons-page>
+   
+</favourite-dir>
+<ons-template id="navigator.html">
+  <ons-dialog style="height: 170px;" var="naviDialog" cancelable>
+
+    <ons-navigator var="myNav">
+      <ons-toolbar inline>
+        <div class="center">
+         پیام
+        </div>
+      </ons-toolbar>
+
+      <div class="nav_content" style="text-align: center">
+        <p>
+          برای دیدن لیست علاقه مندی ها وارد شوید
+        </p>
+
+        <p>
+         <quick-logindir>
+          <ons-button ng-click="register()">عضویت</ons-button>  
+          <ons-button ng-click="login()">ورود</ons-button>
+         </quick-logindir>  
+        </p>
+      </div>
+    </ons-navigator>
+  </ons-dialog>
+</ons-template>
+<!--- =================================================================================--->
+<ons-template id="myPopover.html">
+    <ons-popover cancelable direction="down">
+        <div style="text-align: center;">
+             <ons-list>
+                    <pop-over>
+                    <ons-list-item ng-click="go('/login')" ng-if="login == 0" >ورود به حساب کاربری</ons-list-item>
+                    <ons-list-item ng-click="go('/register')" ng-if="login == 0" >عضویت در دمپخت</ons-list-item>
+                    <ons-list-item ng-if="login == 1" >{{ name }}</ons-list-item>
+                    <ons-list-item ng-if="login == 1" ng-click="logout()" >برون رفت</ons-list-item>
+                </pop-over>
+            </ons-list>
+        </div>
+    </ons-popover>
+</ons-template>

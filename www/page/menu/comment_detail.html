@@ -1,0 +1,47 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="order_list food_cm support_one">
+    <ons-toolbar>
+        <div class="left" ng-click="go()"><ons-back-button></ons-back-button></div>
+        <div class="center">نظرات کاربران</div>
+    </ons-toolbar>
+    <div class="tiket_list">
+        <div class="tiket_one user profile-wrapper">
+		<!--========================================tiketone -----------===============-->
+            <ons-row ng-repeat="comment in comments" class="profile-wrapper2">
+                <ons-col width="60px" class="profile-image-wrapper">
+                    <img ng-if="comment.picname" ng-src="{{ base_img + comment.picname }}" class="profile-image">
+                    <img ng-if="!comment.picname" ng-src="img/user_men.jpg" class="profile-image">
+                </ons-col>
+                <ons-col>
+                    <div class="profile-name"></div>
+                    <div class="profile-date">{{ comment.date }}</div>
+                </ons-col>
+                <div class="tiket_text"> 
+					{{ comment.text }}
+				</div>
+            </ons-row> 
+			<!--========================================tiketone -----------===============-->
+            
+			<!--========================================tiketone -----------===============-->
+        </div>
+    </div>
+    
+    <div class="tiket_list" ng-if="comments.length == 0">
+        <div class="tiket_one user profile-wrapper" style="text-align:center">
+		   نظری ثبت نشده است
+        </div>
+    </div>
+</ons-page>
+<style> 
+.food_cm .rating{
+    text-align: right;
+}
+.food_cm .rating > span {
+    font-size: 12px;
+}
+.food_cm .profile-image
+{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+</style>

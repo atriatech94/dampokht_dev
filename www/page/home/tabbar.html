@@ -1,0 +1,41 @@
+<!--
+<ons-tabbar animation="fade" var="amin">
+    <ons-tab page="home.html" label="خانه" ng-click="tabbar_go('/home')" icon="ion-ios-home-outline" active="true" ></ons-tab>
+    <ons-tab page="favourite.html"  label="علاقمندی ها" ng-click="tabbar_go('/favourite')" icon="ion-ios-heart-outline" ></ons-tab>
+    <ons-tab page="buybasket.html"  label="سبد خرید" ng-click="tabbar_go('/buybasket')" icon="ion-clipboard"></ons-tab>
+    <ons-tab page="more.html"  label="بیشتر"  ng-click="tabbar_go('/more')" icon="ion-android-more-horizontal"   ></ons-tab>
+</ons-tabbar>
+-->
+
+<div class="tab-bar">
+  <label class="tab-bar__item"  ng-click="tabbar_go('/home')">
+    <input type="radio" name="tab-bar-c" ng-checked="activemenu=='home' ">
+    <button class="tab-bar__button">
+        <i class="tab-bar__icon ion-ios-home-outline"></i>
+      <div class="tab-bar__label">خانه</div>
+    </button>
+  </label>
+    <label class="tab-bar__item"  ng-click="tabbar_go('/favourite')">
+    <input type="radio" name="tab-bar-c" ng-checked="activemenu=='favourite' " >
+    <button class="tab-bar__button">
+        <i class="tab-bar__icon ion-ios-heart-outline"></i>
+      <div class="tab-bar__label">علاقمندی ها</div>
+    </button>
+  </label>
+
+  <label class="tab-bar__item"  ng-click="tabbar_go('/buybasket')">
+    <input type="radio" name="tab-bar-c" ng-checked="activemenu=='buybasket' ">
+    <button class="tab-bar__button">
+        <i class="tab-bar__icon ion-clipboard"></i>
+      <div class="tab-bar__label">سبد خرید</div>
+    </button>
+  </label>
+
+  <label class="tab-bar__item"  ng-click="tabbar_go('/more')">
+    <input type="radio" name="tab-bar-c" ng-checked="activemenu=='more' ">
+    <button class="tab-bar__button">
+        <i class="tab-bar__icon ion-android-more-horizontal"></i>
+      <div class="tab-bar__label">بیشتر</div>
+    </button>
+  </label>
+</div>

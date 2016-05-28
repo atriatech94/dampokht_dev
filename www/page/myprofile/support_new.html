@@ -1,0 +1,67 @@
+<dir-tabbar></dir-tabbar>
+<ons-page class="order_list support_list">
+    <ons-toolbar> 
+        <div class="left" ng-click="go('/myprofile/support')"><ons-back-button></ons-back-button></div>
+        <div class="center">درخواست جدید</div>
+        
+    </ons-toolbar>
+    
+     <ons-list modifier="inset" style="margin-top: 10px">   
+         <ons-list-item>
+             <input type="text" ng-model="subject" class="text-input text-input--transparent" placeholder="عنوان درخواست" style="width: 100%">
+         </ons-list-item>
+         <ons-list-item>
+             <select class="select_def" ng-model="unit_choose">
+                <option value="" >انتخاب بخش</option>
+                <option ng-repeat="unit in units"  value="{{ unit.id }}" >{{ unit.name }}</option>
+             </select>
+         </ons-list-item>
+         <ons-list-item>
+            <select class="select_def" ng-model="priority">
+                <option value="" > اولویت</option>
+                <option value="0">کم</option>
+                <option value="1">متوسط</option>
+                <option value="2">زیاد</option>
+             </select>        
+         </ons-list-item>
+         <ons-list-item>
+             <textarea ng-model="message" class="textarea textarea--transparent"  placeholder="پیام" style="width: 100%; height: 100px;"></textarea>
+         </ons-list-item>
+      </ons-list>
+      <div style="padding: 10px 9px"><ons-button modifier="large" ng-click="submit()" style="margin: 0 auto;">ارسال</ons-button></div>
+</ons-page>
+<style>
+
+.to-wrapper {
+  line-height: 1;
+  height: 62px;
+  padding: 10px;
+}
+
+.to-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
+.to-name {
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.to-email {
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.text-input {
+  margin-top: 4px;
+}
+
+.textarea {
+  margin-top: 4px;
+}
+
+</style>

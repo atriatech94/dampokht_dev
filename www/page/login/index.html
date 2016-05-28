@@ -1,0 +1,23 @@
+<dir-tabbar></dir-tabbar>
+<ons-page>
+    <ons-toolbar>
+        <div class="center">ورود  به حساب کاربری دمپخت</div>
+        <div class="navigation-bar__left navigation-bar--android__left" ng-click="hback();" >
+            <span class="toolbar-button navigation-bar__line-height" style="padding:4px 5px 0 5px;position: relative;top: 3px;"><i class="ion-ios-arrow-left" style="font-size:24px;padding-left:10px;"></i></span>
+        </div> 
+    </ons-toolbar>
+
+    <div class="login-form">
+        <form>
+             <div class="progress-bar progress-bar--indeterminate" style="display:none;" id="loading"></div>
+          <input type="text" ng-model="user"   class="text-input--underbar" placeholder="تلفن همراه یا ایمیل" >
+          <input type="password" ng-model="password" class="text-input--underbar" placeholder="رمز عبور" >
+          <br><br>
+          <ons-button ng-click="submit()"  modifier="large" class="login-button">ورود</ons-button>
+        </form>   
+          <br><br>
+          <ons-button modifier="quiet" ng-click="go('/forget_pass')" class="forgot-password"> رمز عبور خود را فراموش کرده ام ! </ons-button>
+          <ons-button modifier="quiet" ng-click="go('/register')" class="forgot-password">  عضویت در دمپخت  </ons-button>
+    </div>
+    
+</ons-page>  

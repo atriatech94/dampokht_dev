@@ -1,0 +1,27 @@
+<dir-tabbar></dir-tabbar>
+<ons-page> 
+    <ons-toolbar>
+        <div class="left" ng-click="go('/more')"><ons-back-button></ons-back-button></div>
+        <div class="center">لیست شعب</div>
+    </ons-toolbar>
+        <ons-row class="branches">
+            <div class="branch_one" ng-repeat="branch in branches">
+                
+                <p class="name">{{branch.name}}</p>
+                <p class="address">
+                    <span>{{branch.address}}</span>
+                <p class="address">
+                      <span class="tell">شمار تماس : {{branch.phone}}</span>
+                  </p>
+                <ul class="area_branch">
+                    مناطق تحت پوشش :
+                    <li ng-repeat="area in branch.area" >{{area}}</li>
+                </ul>
+                <div class="btns">
+                    <button ng-click="go('/menu/'+branch.id)" class="btn_def btn_blue button--light">سفارش غذا</button>
+                    <button ng-click="add_branch(branch.id)" ng-if="d_branch != branch.id  && d_branch != null" class="btn_def button--light">    شعبه ی پیش فرض </button>
+                    <button ng-click="remove_branch(branch.id)" ng-if="d_branch == branch.id  && d_branch != null" class="btn_def button--light">  <i class="ion-checkmark-circled" ></i> شعبه ی پیش فرض </button>
+                </div>
+            </div>
+    </ons-row>
+</ons-page>
